@@ -31,11 +31,11 @@ while [ $START -le $LINES ]; do
 
     OUTPUT_PATH="storage/embeddings_chunk_$(printf "%02d" $CHUNK).hdf5"
 
-    python prepare_embeddings_enriched_fast.py \
+    python prepare_embeddings_enriched.py \
         --input_json "$REVIEW_FILE" \
         --output_hdf5 "$OUTPUT_PATH" \
         --batch_size 512 \
-        --num_workers 8
+        --num_workers 16
 
     START=$((END + 1))
     CHUNK=$((CHUNK + 1))
